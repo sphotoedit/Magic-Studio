@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magic Studio - Price Calculator</title>
+<meta name="theme-color" content="#c41b1e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+html,body{
+height:100%;
+}
+
+body{
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+background:#f5f5f7;
+color:#1d1d1f;
+display:flex;
+flex-direction:column;
+overflow:hidden;
+}
+
+/* Top */
+.top{
+height:70px;
+background:#fff;
+border-bottom:1px solid #e5e5e5;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+flex-shrink:0;
+}
+
+.logo{
+width:140px;
+height:45px;
+object-fit:contain;
+}
+
+.version{
+font-size:18px;
+font-weight:700;
+color:#c41b1e;
+}
+
+/* Container */
+.container{
+flex:1;
+max-width:720px;
+margin:auto;
+width:100%;
+padding:24px 28px;
+background:#fff;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+/* Fields */
+.field{margin-bottom:22px}
+
+label{
+font-size:16px;
+font-weight:600;
+margin-bottom:8px;
+display:block;
+}
+
+input,select{
+width:100%;
+padding:14px;
+font-size:18px;
+border:1px solid #d0d0d6;
+border-radius:12px;
+}
+
+input:focus,select:focus{
+outline:none;
+border-color:#c41b1e;
+}
+
+select{
+appearance:none;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpath fill='%23666' d='M5 8l5 5 5-5z'/%3E%3C/svg%3E");
+background-repeat:no-repeat;
+background-position:right 14px center;
+background-size:12px;
+}
+
+/* Frame Buttons */
+.frame-buttons{
+display:flex;
+gap:10px;
+}
+
+.frame-btn{
+flex:1;
+padding:16px 8px;
+font-size:17px;
+font-weight:600;
+border:1px solid #d0d0d6;
+border-radius:14px;
+background:#fff;
+}
+
+.frame-btn.active{
+background:#c41b1e;
+color:#fff;
+border-color:#c41b1e;
+}
+
+/* Checkbox */
+.check{
+display:flex;
+align-items:center;
+gap:12px;
+margin-top:12px;
+}
+
+input[type="checkbox"]{
+width:22px;
+height:22px;
+}
+
+/* Summary */
+.summary{
+border-top:1px solid #e5e5e5;
+padding-top:18px;
+}
+
+.summary-item{
+font-size:16px;
+margin-bottom:8px;
+}
+
+.final-amount{
+font-size:32px;
+font-weight:700;
+color:#c41b1e;
+margin:12px 0;
+}
+
+.copy-btn{
+padding:14px;
+background:#e5e5e5;
+border:none;
+border-radius:12px;
+width:100%;
+font-size:16px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+<img src="https://i.ibb.co/YTLYmMSy/Profile.jpg" class="logo">
+<span class="version">Version 2</span>
+</div>
+
+<div class="container">
+
+<div>
+<div class="field">
+<label>Editing (₹)</label>
+<input type="number" id="editing" value="0">
+</div>
+
+<div class="field">
+<label>Frames</label>
+<div class="frame-buttons" id="frameButtons">
+<button class="frame-btn" data-value="15">15</button>
+<button class="frame-btn" data-value="25">25</button>
+<button class="frame-btn" data-value="35">35</button>
+<button class="frame-btn" data-value="45">45</button>
+<button class="frame-btn" data-value="65">65</button>
+<button class="frame-btn" data-value="75">75</button>
+</div>
+</div>
+
+<div class="field">
+<label>Frame Size</label>
+<select id="frameSize">
+<option value="">— Select</option>
+<option>4x6</option><option>5x7</option><option>6x8</option>
+<option>8x10</option><option>8x12</option><option>10x12</option>
+<option>10x14</option><option>12x15</option><option>12x18</option>
+<option>16x20</option><option>20x24</option><option>20x30</option>
+</select>
+</div>
+
+<div class="field">
+<label>Print Size</label>
+<select id="printSize">
+<option value="">— Select</option>
+<option>4x6</option><option>5x7</option><option>6x8</option>
+<option>6x9</option><option>7x10</option><option>8x10</option>
+<option>8x12</option><option>10x12</option><option>10x14</option>
+<option>12x15</option><option>12x18</option><option>12x20</option>
+<option>12x24</option><option>12x30</option><option>12x36</option>
+<option>16x20</option><option>20x24</option><option>20x30</option>
+<option>20x40</option><option>20x50</option><option>20x60</option>
+<option>20x70</option><option>20x90</option>
+<option>24x30</option><option>24x36</option>
+<option>30x36</option><option>30x40</option>
+<option>30x45</option><option>30x50</option>
+</select>
+
+<div class="check">
+<input type="checkbox" id="lamination">
+<span>Matt Lamination</span>
+</div>
+</div>
+</div>
+
+<div class="summary">
+<div class="summary-item" id="editSummary">Editing: ₹0</div>
+<div class="summary-item" id="frameSummary">Frames (0 | —): ₹0</div>
+<div class="summary-item" id="printSummary">Print (—): ₹0</div>
+<div class="summary-item" id="lamSummary">Matt Lamination: ₹0</div>
+<div class="summary-item">Total: ₹<span id="total">0</span></div>
+<div class="final-amount">Amount ₹<span id="roundTotal">0</span></div>
+<button class="copy-btn" id="copyBtn">Copy Summary</button>
+</div>
+
+</div>
+
+<script>
+var framePrices={
+15:{"4x6":125,"5x7":110,"6x8":135,"8x10":210,"8x12":235,"10x12":270,"10x14":290,"12x15":310,"12x18":360,"16x20":470},
+25:{"4x6":130,"5x7":140,"6x8":170,"8x10":255,"8x12":285,"10x12":300,"10x14":335,"12x15":385,"12x18":445,"16x20":575,"20x24":675,"20x30":910},
+35:{"4x6":135,"5x7":160,"6x8":190,"8x10":280,"8x12":310,"10x12":350,"10x14":390,"12x15":430,"12x18":470,"16x20":590,"20x24":750,"20x30":970},
+45:{"4x6":150,"5x7":170,"6x8":200,"8x10":290,"8x12":325,"10x12":365,"10x14":405,"12x15":445,"12x18":500,"16x20":630,"20x24":790,"20x30":1010},
+65:{"4x6":185,"5x7":200,"6x8":240,"8x10":330,"8x12":390,"10x12":450,"10x14":490,"12x15":540,"12x18":610,"16x20":786,"20x24":970,"20x30":1250},
+75:{"6x8":560,"8x10":720,"8x12":800,"10x12":880,"10x14":960,"12x15":1080,"12x18":1200,"16x20":1440,"20x24":1760,"20x30":2040}
+};
+
+var printPrices={
+"4x6":25,"5x7":30,"6x8":50,"6x9":60,"7x10":85,"8x10":85,"8x12":85,
+"10x12":150,"10x14":175,"12x15":200,"12x18":225,"12x20":250,
+"12x24":300,"12x30":350,"12x36":400,"16x20":300,"20x24":450,
+"20x30":550,"20x40":650,"20x50":750,"20x60":850,"20x70":950,
+"20x90":1150,"24x30":800,"24x36":900,"30x36":1100,
+"30x40":1250,"30x45":1400,"30x50":1600
+};
+
+var laminationPrices={
+"4x6":20,"5x7":30,"6x8":40,"8x10":65,"8x12":80,"10x12":95,
+"10x14":115,"12x15":145,"12x18":170,"16x20":255,
+"20x24":385,"20x30":480
+};
+
+var selectedFrames="";
+
+function calculate(){
+var sum=0;
+var edit=parseInt(editing.value)||0;
+sum+=edit;
+editSummary.textContent="Editing: ₹"+edit;
+
+var fs=frameSize.value;
+var frameCost=0;
+if(selectedFrames && fs && framePrices[selectedFrames] && framePrices[selectedFrames][fs]){
+frameCost=framePrices[selectedFrames][fs];
+sum+=frameCost;
+}
+frameSummary.textContent="Frames ("+(selectedFrames||0)+" | "+(fs||"—")+"): ₹"+frameCost;
+
+var ps=printSize.value;
+var printCost=0;
+if(printPrices[ps]){
+printCost=printPrices[ps];
+sum+=printCost;
+}
+printSummary.textContent="Print ("+(ps||"—")+"): ₹"+printCost;
+
+var lamCost=0;
+if(lamination.checked && laminationPrices[ps]){
+lamCost=laminationPrices[ps];
+sum+=lamCost;
+}
+lamSummary.textContent="Matt Lamination: ₹"+lamCost;
+
+total.textContent=sum;
+roundTotal.textContent=Math.ceil(sum/10)*10;
+}
+
+var btns=document.querySelectorAll(".frame-btn");
+for(var i=0;i<btns.length;i++){
+btns[i].onclick=function(){
+for(var j=0;j<btns.length;j++){btns[j].classList.remove("active")}
+this.classList.add("active");
+selectedFrames=this.getAttribute("data-value");
+calculate();
+};
+}
+
+editing.oninput=calculate;
+frameSize.onchange=calculate;
+printSize.onchange=calculate;
+lamination.onchange=calculate;
+
+copyBtn.onclick=function(){
+var text=
+editSummary.textContent+"\n"+
+frameSummary.textContent+"\n"+
+printSummary.textContent+"\n"+
+lamSummary.textContent+"\n"+
+"Total: ₹"+total.textContent+"\n"+
+"Amount: ₹"+roundTotal.textContent;
+
+var ta=document.createElement("textarea");
+ta.value=text;
+document.body.appendChild(ta);
+ta.select();
+document.execCommand("copy");
+document.body.removeChild(ta);
+
+copyBtn.textContent="Copied ✓";
+setTimeout(function(){copyBtn.textContent="Copy Summary"},1500);
+};
+
+calculate();
+</script>
+
+</body>
+</html>
