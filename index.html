@@ -7,155 +7,30 @@
 <meta name="theme-color" content="#c41b1e">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
-html,body{
-height:100%;
-}
-
-body{
-font-family:-apple-system,BlinkMacSystemFont,sans-serif;
-background:#f5f5f7;
-color:#1d1d1f;
-display:flex;
-flex-direction:column;
-overflow:hidden;
-}
-
-/* Top */
-.top{
-height:70px;
-background:#fff;
-border-bottom:1px solid #e5e5e5;
-display:flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-flex-shrink:0;
-}
-
-.logo{
-width:140px;
-height:45px;
-object-fit:contain;
-}
-
-.version{
-font-size:18px;
-font-weight:700;
-color:#c41b1e;
-}
-
-/* Container */
-.container{
-flex:1;
-max-width:720px;
-margin:auto;
-width:100%;
-padding:24px 28px;
-background:#fff;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-}
-
-/* Fields */
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f5f5f7;color:#1d1d1f;display:flex;flex-direction:column;overflow:hidden}
+.top{height:70px;background:#fff;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;justify-content:center;gap:12px;flex-shrink:0}
+.logo{width:140px;height:45px;object-fit:contain}
+.version{font-size:18px;font-weight:700;color:#c41b1e}
+.container{flex:1;max-width:720px;margin:auto;width:100%;padding:24px 28px;background:#fff;display:flex;flex-direction:column;justify-content:space-between}
 .field{margin-bottom:22px}
-
-label{
-font-size:16px;
-font-weight:600;
-margin-bottom:8px;
-display:block;
-}
-
-input,select{
-width:100%;
-padding:14px;
-font-size:18px;
-border:1px solid #d0d0d6;
-border-radius:12px;
-}
-
-input:focus,select:focus{
-outline:none;
-border-color:#c41b1e;
-}
-
-select{
-appearance:none;
-background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpath fill='%23666' d='M5 8l5 5 5-5z'/%3E%3C/svg%3E");
-background-repeat:no-repeat;
-background-position:right 14px center;
-background-size:12px;
-}
-
-/* Frame Buttons */
-.frame-buttons{
-display:flex;
-gap:10px;
-}
-
-.frame-btn{
-flex:1;
-padding:16px 8px;
-font-size:17px;
-font-weight:600;
-border:1px solid #d0d0d6;
-border-radius:14px;
-background:#fff;
-}
-
-.frame-btn.active{
-background:#c41b1e;
-color:#fff;
-border-color:#c41b1e;
-}
-
-/* Checkbox */
-.check{
-display:flex;
-align-items:center;
-gap:12px;
-margin-top:12px;
-}
-
-input[type="checkbox"]{
-width:22px;
-height:22px;
-}
-
-/* Summary */
-.summary{
-border-top:1px solid #e5e5e5;
-padding-top:18px;
-}
-
-.summary-item{
-font-size:16px;
-margin-bottom:8px;
-}
-
-.final-amount{
-font-size:32px;
-font-weight:700;
-color:#c41b1e;
-margin:12px 0;
-}
-
-.copy-btn{
-padding:14px;
-background:#e5e5e5;
-border:none;
-border-radius:12px;
-width:100%;
-font-size:16px;
-}
+label{font-size:16px;font-weight:600;margin-bottom:8px;display:block}
+input,select{width:100%;padding:14px;font-size:18px;border:1px solid #d0d0d6;border-radius:12px}
+input:focus,select:focus{outline:none;border-color:#c41b1e}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpath fill='%23666' d='M5 8l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px}
+.frame-buttons{display:flex;gap:10px}
+.frame-btn{flex:1;padding:16px 8px;font-size:17px;font-weight:600;border:1px solid #d0d0d6;border-radius:14px;background:#fff}
+.frame-btn.active{background:#c41b1e;color:#fff;border-color:#c41b1e}
+.check{display:flex;align-items:center;gap:12px;margin-top:12px}
+input[type="checkbox"]{width:22px;height:22px}
+.summary{border-top:1px solid #e5e5e5;padding-top:18px}
+.summary-item{font-size:16px;margin-bottom:8px}
+.final-amount{font-size:32px;font-weight:700;color:#c41b1e;margin:12px 0}
+.copy-btn{padding:14px;background:#e5e5e5;border:none;border-radius:12px;width:100%;font-size:16px}
 </style>
 </head>
-
 <body>
 
 <div class="top">
@@ -164,16 +39,15 @@ font-size:16px;
 </div>
 
 <div class="container">
-
 <div>
 <div class="field">
-<label>Editing (₹)</label>
+<label>Editing (&#8377;)</label>
 <input type="number" id="editing" value="0">
 </div>
 
 <div class="field">
 <label>Frames</label>
-<div class="frame-buttons" id="frameButtons">
+<div class="frame-buttons">
 <button class="frame-btn" data-value="15">15</button>
 <button class="frame-btn" data-value="25">25</button>
 <button class="frame-btn" data-value="35">35</button>
@@ -186,7 +60,7 @@ font-size:16px;
 <div class="field">
 <label>Frame Size</label>
 <select id="frameSize">
-<option value="">— Select</option>
+<option value="">-- Select</option>
 <option>4x6</option><option>5x7</option><option>6x8</option>
 <option>8x10</option><option>8x12</option><option>10x12</option>
 <option>10x14</option><option>12x15</option><option>12x18</option>
@@ -197,7 +71,7 @@ font-size:16px;
 <div class="field">
 <label>Print Size</label>
 <select id="printSize">
-<option value="">— Select</option>
+<option value="">-- Select</option>
 <option>4x6</option><option>5x7</option><option>6x8</option>
 <option>6x9</option><option>7x10</option><option>8x10</option>
 <option>8x12</option><option>10x12</option><option>10x14</option>
@@ -210,7 +84,6 @@ font-size:16px;
 <option>30x36</option><option>30x40</option>
 <option>30x45</option><option>30x50</option>
 </select>
-
 <div class="check">
 <input type="checkbox" id="lamination">
 <span>Matt Lamination</span>
@@ -219,15 +92,14 @@ font-size:16px;
 </div>
 
 <div class="summary">
-<div class="summary-item" id="editSummary">Editing: ₹0</div>
-<div class="summary-item" id="frameSummary">Frames (0 | —): ₹0</div>
-<div class="summary-item" id="printSummary">Print (—): ₹0</div>
-<div class="summary-item" id="lamSummary">Matt Lamination: ₹0</div>
-<div class="summary-item">Total: ₹<span id="total">0</span></div>
-<div class="final-amount">Amount ₹<span id="roundTotal">0</span></div>
+<div class="summary-item" id="editSummary">Editing: &#8377;0</div>
+<div class="summary-item" id="frameSummary">Frames (0 | --): &#8377;0</div>
+<div class="summary-item" id="printSummary">Print (--): &#8377;0</div>
+<div class="summary-item" id="lamSummary">Matt Lamination: &#8377;0</div>
+<div class="summary-item">Total: &#8377;<span id="total">0</span></div>
+<div class="final-amount">Amount &#8377;<span id="roundTotal">0</span></div>
 <button class="copy-btn" id="copyBtn">Copy Summary</button>
 </div>
-
 </div>
 
 <script>
@@ -249,84 +121,120 @@ var printPrices={
 "30x40":1250,"30x45":1400,"30x50":1600
 };
 
-var laminationPrices={
-"4x6":20,"5x7":30,"6x8":40,"8x10":65,"8x12":80,"10x12":95,
-"10x14":115,"12x15":145,"12x18":170,"16x20":255,
-"20x24":385,"20x30":480
+/* Lamination: size x width x 0.80, max size is 20x30 */
+var laminationAllowed={
+"4x6":1,"5x7":1,"6x8":1,"6x9":1,"7x10":1,"8x10":1,"8x12":1,
+"10x12":1,"10x14":1,"12x15":1,"12x18":1,"12x20":1,"12x24":1,
+"16x20":1,"20x24":1,"20x30":1
 };
 
-var selectedFrames="";
+function getLamCost(size){
+  if(!size || !laminationAllowed[size]) return 0;
+  var parts = size.split("x");
+  if(parts.length !== 2) return 0;
+  var l = parseFloat(parts[0]);
+  var w = parseFloat(parts[1]);
+  if(isNaN(l) || isNaN(w)) return 0;
+  return Math.round(l * w * 0.80);
+}
+
+var selectedFrames = "";
 
 function calculate(){
-var sum=0;
-var edit=parseInt(editing.value)||0;
-sum+=edit;
-editSummary.textContent="Editing: ₹"+edit;
+  var sum = 0;
 
-var fs=frameSize.value;
-var frameCost=0;
-if(selectedFrames && fs && framePrices[selectedFrames] && framePrices[selectedFrames][fs]){
-frameCost=framePrices[selectedFrames][fs];
-sum+=frameCost;
-}
-frameSummary.textContent="Frames ("+(selectedFrames||0)+" | "+(fs||"—")+"): ₹"+frameCost;
+  var edit = parseInt(document.getElementById("editing").value) || 0;
+  sum += edit;
+  document.getElementById("editSummary").textContent = "Editing: \u20B9" + edit;
 
-var ps=printSize.value;
-var printCost=0;
-if(printPrices[ps]){
-printCost=printPrices[ps];
-sum+=printCost;
-}
-printSummary.textContent="Print ("+(ps||"—")+"): ₹"+printCost;
+  var fs = document.getElementById("frameSize").value;
+  var frameCost = 0;
+  if(selectedFrames && fs && framePrices[selectedFrames] && framePrices[selectedFrames][fs]){
+    frameCost = framePrices[selectedFrames][fs];
+    sum += frameCost;
+  }
+  document.getElementById("frameSummary").textContent = "Frames (" + (selectedFrames||0) + " | " + (fs||"--") + "): \u20B9" + frameCost;
 
-var lamCost=0;
-if(lamination.checked && laminationPrices[ps]){
-lamCost=laminationPrices[ps];
-sum+=lamCost;
-}
-lamSummary.textContent="Matt Lamination: ₹"+lamCost;
+  var ps = document.getElementById("printSize").value;
+  var printCost = 0;
+  if(printPrices[ps]){ printCost = printPrices[ps]; sum += printCost; }
+  document.getElementById("printSummary").textContent = "Print (" + (ps||"--") + "): \u20B9" + printCost;
 
-total.textContent=sum;
-roundTotal.textContent=Math.ceil(sum/10)*10;
-}
+  var lamCost = 0;
+  var lamChecked = document.getElementById("lamination").checked;
+  var lamText = "Matt Lamination: \u20B90";
 
-var btns=document.querySelectorAll(".frame-btn");
-for(var i=0;i<btns.length;i++){
-btns[i].onclick=function(){
-for(var j=0;j<btns.length;j++){btns[j].classList.remove("active")}
-this.classList.add("active");
-selectedFrames=this.getAttribute("data-value");
-calculate();
-};
+  if(lamChecked && ps){
+    if(laminationAllowed[ps]){
+      lamCost = getLamCost(ps);
+      sum += lamCost;
+      lamText = "Matt Lamination: \u20B9" + lamCost;
+    } else {
+      lamText = "Matt Lamination: Not available for this size";
+    }
+  }
+  document.getElementById("lamSummary").textContent = lamText;
+
+  document.getElementById("total").textContent = sum;
+  document.getElementById("roundTotal").textContent = Math.ceil(sum / 10) * 10;
 }
 
-editing.oninput=calculate;
-frameSize.onchange=calculate;
-printSize.onchange=calculate;
-lamination.onchange=calculate;
+var btns = document.querySelectorAll(".frame-btn");
+for(var i = 0; i < btns.length; i++){
+  btns[i].onclick = function(){
+    for(var j = 0; j < btns.length; j++){ btns[j].classList.remove("active"); }
+    this.classList.add("active");
+    selectedFrames = this.getAttribute("data-value");
+    calculate();
+  };
+}
 
-copyBtn.onclick=function(){
-var text=
-editSummary.textContent+"\n"+
-frameSummary.textContent+"\n"+
-printSummary.textContent+"\n"+
-lamSummary.textContent+"\n"+
-"Total: ₹"+total.textContent+"\n"+
-"Amount: ₹"+roundTotal.textContent;
+document.getElementById("editing").oninput = calculate;
+document.getElementById("frameSize").onchange = calculate;
+document.getElementById("printSize").onchange = calculate;
+document.getElementById("lamination").onchange = calculate;
 
-var ta=document.createElement("textarea");
-ta.value=text;
-document.body.appendChild(ta);
-ta.select();
-document.execCommand("copy");
-document.body.removeChild(ta);
+/* iOS-safe clipboard copy */
+function iosFallbackCopy(text){
+  var ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.cssText = "position:fixed;top:0;left:0;width:2px;height:2px;padding:0;border:none;outline:none;background:transparent;font-size:16px;opacity:0;";
+  document.body.appendChild(ta);
+  ta.focus();
+  var range = document.createRange();
+  range.selectNodeContents(ta);
+  var sel = window.getSelection();
+  if(sel){ sel.removeAllRanges(); sel.addRange(range); }
+  ta.setSelectionRange(0, 99999);
+  var ok = false;
+  try{ ok = document.execCommand("copy"); } catch(e){}
+  document.body.removeChild(ta);
+  return ok;
+}
 
-copyBtn.textContent="Copied ✓";
-setTimeout(function(){copyBtn.textContent="Copy Summary"},1500);
+document.getElementById("copyBtn").onclick = function(){
+  var btn = this;
+  var text =
+    document.getElementById("editSummary").textContent + "\n" +
+    document.getElementById("frameSummary").textContent + "\n" +
+    document.getElementById("printSummary").textContent + "\n" +
+    document.getElementById("lamSummary").textContent + "\n" +
+    "Total: \u20B9" + document.getElementById("total").textContent + "\n" +
+    "Amount: \u20B9" + document.getElementById("roundTotal").textContent;
+
+  function onSuccess(){ btn.textContent = "Copied \u2713"; setTimeout(function(){ btn.textContent = "Copy Summary"; }, 1500); }
+  function onFail(){ btn.textContent = "Copy failed \u2717"; setTimeout(function(){ btn.textContent = "Copy Summary"; }, 1500); }
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(onSuccess).catch(function(){
+      iosFallbackCopy(text) ? onSuccess() : onFail();
+    });
+  } else {
+    iosFallbackCopy(text) ? onSuccess() : onFail();
+  }
 };
 
 calculate();
 </script>
-
 </body>
 </html>
